@@ -71,7 +71,7 @@ export async function getStaticProps() {
     props: {
       ...data,
     },
-    revalidate: 60, // 60초마다 페이지를 재생성
+    revalidate: 1800, // 30분마다 페이지를 재생성
   };
 }
 
