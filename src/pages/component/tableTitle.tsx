@@ -6,7 +6,7 @@ interface TableInfo {
   tableDetails: Array<TableDetail>;
 }
 
-const TableTitle: React.FC<TableInfo> = ({ subTitle, tableDetails }) => {
+const TableTitle: React.FC<TableInfo> = ({ subTitle, tableDetails = [] }) => {
   return (
     <div className="mt-6 overflow-x-auto">
       <h2 className="text-lg font-semibold mb-2">{subTitle}</h2>
