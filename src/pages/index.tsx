@@ -114,6 +114,8 @@ const Home: React.FC<PortfolioData> = ({
         <div className="space-y-4">
           <ShareTableTitle
             subTitle="국내주식"
+            totalInvestment={tossPortfolioDTO.domesticTotal}
+            totalRevenue={tossPortfolioDTO.domesticRevenue}
             tableDetails={domesticsList.map((domestics) => ({
               name: domestics.stockName,
               totalRate: domestics.totalReturnRate,
@@ -129,6 +131,8 @@ const Home: React.FC<PortfolioData> = ({
           />
           <ShareTableTitle
             subTitle="해외주식"
+            totalInvestment={tossPortfolioDTO.overSeasTotal}
+            totalRevenue={tossPortfolioDTO.overSeasRevenue}
             tableDetails={overSeasList.map((domestics) => ({
               name: domestics.stockName,
               totalRate: domestics.totalReturnRate,
