@@ -76,44 +76,68 @@ export async function getStaticProps() {
 }
 
 const Home: React.FC<PortfolioData> = ({ tossPortfolioDTO }) => {
-  const { domesticsList, overSeasList } = tossPortfolioDTO;
+  const {
+    totalInvestment,
+    totalRevenue,
+    dailyRevenue,
+    domesticsList,
+    overSeasList,
+  } = tossPortfolioDTO;
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold">내 투자</h1>
-      <p className="text-xl mt-2">1,650,048원</p>
-      <p className="text-red-500">총 수익 +33,559원 (2.0%)</p>
-      <p className="text-gray-400">일간 수익 -5,698원 (0.3%)</p>
-      <TableTitle
-        subTitle="국내주식"
-        tableDetails={domesticsList.map((domestics) => ({
-          name: domestics.stockName,
-          totalRate: domestics.totalReturnRate,
-          totalProfit: domestics.totalProfit,
-          avgPrice: domestics.averagePricePerShare,
-          currentPrice: domestics.currentPrice,
-          shares: domestics.quantityOwned,
-          totalValue: domestics.evaluationAmount,
-          principal: domestics.principalAmount,
-          dailyRate: domestics.dailyReturnRate,
-          dailyProfit: domestics.dailyProfit,
-        }))}
-      />
-      <TableTitle
-        subTitle="해외주식"
-        tableDetails={overSeasList.map((domestics) => ({
-          name: domestics.stockName,
-          totalRate: domestics.totalReturnRate,
-          totalProfit: domestics.totalProfit,
-          avgPrice: domestics.averagePricePerShare,
-          currentPrice: domestics.currentPrice,
-          shares: domestics.quantityOwned,
-          totalValue: domestics.evaluationAmount,
-          principal: domestics.principalAmount,
-          dailyRate: domestics.dailyReturnRate,
-          dailyProfit: domestics.dailyProfit,
-        }))}
-      />
+    <div className="bg-gray-900 text-white p-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
+          <h1 className="text-2xl font-bold">내 투자</h1>
+          <p className="text-3xl font-semibold mt-2">{totalInvestment}</p>
+          <p
+            className={`${
+              totalRevenue.includes("+") ? "text-red-400" : "text-blue-400"
+            } mt-1`}
+          >
+            총 수익: {totalRevenue}
+          </p>
+          <p
+            className={`${
+              totalRevenue.includes("+") ? "text-red-400" : "text-blue-400"
+            }`}
+          >
+            일간 수익: {dailyRevenue}
+          </p>
+        </div>
+        <div className="space-y-4">
+          <TableTitle
+            subTitle="국내주식"
+            tableDetails={domesticsList.map((domestics) => ({
+              name: domestics.stockName,
+              totalRate: domestics.totalReturnRate,
+              totalProfit: domestics.totalProfit,
+              avgPrice: domestics.averagePricePerShare,
+              currentPrice: domestics.currentPrice,
+              shares: domestics.quantityOwned,
+              totalValue: domestics.evaluationAmount,
+              principal: domestics.principalAmount,
+              dailyRate: domestics.dailyReturnRate,
+              dailyProfit: domestics.dailyProfit,
+            }))}
+          />
+          <TableTitle
+            subTitle="해외주식"
+            tableDetails={overSeasList.map((domestics) => ({
+              name: domestics.stockName,
+              totalRate: domestics.totalReturnRate,
+              totalProfit: domestics.totalProfit,
+              avgPrice: domestics.averagePricePerShare,
+              currentPrice: domestics.currentPrice,
+              shares: domestics.quantityOwned,
+              totalValue: domestics.evaluationAmount,
+              principal: domestics.principalAmount,
+              dailyRate: domestics.dailyReturnRate,
+              dailyProfit: domestics.dailyProfit,
+            }))}
+          />
+        </div>
+      </div>
     </div>
   );
 };

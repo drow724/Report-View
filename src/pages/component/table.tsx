@@ -26,18 +26,29 @@ const TableTr: React.FC<TableDetail> = ({
   dailyProfit,
 }) => {
   return (
-    <tr className="text-center">
-      <td className="border border-gray-700 p-2">{name}</td>
-      <td className={`border border-gray-700 p-2`}>{totalRate}</td>
-      <td className="border border-gray-700 p-2">{totalProfit}</td>
-      <td className="border border-gray-700 p-2">{avgPrice}</td>
-      <td className="border border-gray-700 p-2">{currentPrice}</td>
-      <td className="border border-gray-700 p-2">{shares}</td>
-      <td className="border border-gray-700 p-2">{totalValue}</td>
-      <td className="border border-gray-700 p-2">{principal}</td>
-      <td className={`border border-gray-700 p-2`}>{dailyRate}</td>
-      <td className="border border-gray-700 p-2">{dailyProfit}</td>
-    </tr>
+    <div className="p-3 bg-gray-700 rounded-lg">
+      <p className="text-lg font-semibold">{name}</p>
+      <span></span>
+      <p
+        className={`${
+          totalRate.includes("-") ? "text-red-400" : "text-green-400"
+        }`}
+      >
+        총 수익: {totalRate} ({totalProfit})
+      </p>
+      <p
+        className={`${
+          dailyRate.includes("-") ? "text-red-400" : "text-green-400"
+        }`}
+      >
+        일간 수익: {dailyRate} ({dailyProfit})
+      </p>
+      <p className="text-sm text-gray-400">
+        보유 수량: {shares} | 현재가: {currentPrice} <br />
+        평가금: {totalValue} | 원금: {principal} <br />
+        1주 평균금액: {avgPrice}
+      </p>
+    </div>
   );
 };
 
