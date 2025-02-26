@@ -1,5 +1,6 @@
 import ShareTableTitle from "./component/share/shareTableTitle";
 import FundTableTitle from "./component/fund/fundTableTitle";
+import ReactMarkdown from "react-markdown";
 import "./globals.css";
 
 interface TossPortfolioDTO {
@@ -59,6 +60,7 @@ interface FundDetails {
 }
 
 interface PortfolioData {
+  openAiMarkUpMessage: string;
   tossPortfolioDTO: TossPortfolioDTO;
   kbPortfolioDTO: KBPortfolioDTO;
 }
@@ -77,6 +79,7 @@ export async function getStaticProps() {
 }
 
 const Home: React.FC<PortfolioData> = ({
+  openAiMarkUpMessage,
   tossPortfolioDTO,
   kbPortfolioDTO,
 }) => {
@@ -87,6 +90,9 @@ const Home: React.FC<PortfolioData> = ({
   return (
     <div className="bg-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
+        <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
+          <ReactMarkdown>{openAiMarkUpMessage}</ReactMarkdown>
+        </div>
         <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold">내 투자</h1>
           <p className="text-3xl font-semibold mt-2">
