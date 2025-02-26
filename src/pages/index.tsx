@@ -1,6 +1,8 @@
 import ShareTableTitle from "./component/share/shareTableTitle";
 import FundTableTitle from "./component/fund/fundTableTitle";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Menu } from "lucide-react";
 import "./globals.css";
 
 interface TossPortfolioDTO {
@@ -91,7 +93,49 @@ const Home: React.FC<PortfolioData> = ({
     <div className="bg-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
-          <ReactMarkdown>{openAiMarkUpMessage}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h1: ({ children }) => (
+                <h1 className="text-3xl font-bold flex items-center mb-4">
+                  {children}
+                </h1>
+              ),
+              h2: ({ children }) => (
+                <h2 className="text-2xl font-bold flex items-center mb-4">
+                  {children}
+                </h2>
+              ),
+              h3: ({ children }) => (
+                <h3 className="text-xl font-bold flex items-center mb-4">
+                  {children}
+                </h3>
+              ),
+              h4: ({ children }) => (
+                <h4 className="text-lg font-semibold flex items-center mb-4">
+                  {children}
+                </h4>
+              ),
+              ul: ({ children }) => (
+                <ul className="list-disc pl-5">{children}</ul>
+              ),
+              ol: ({ children }) => (
+                <ol className="list-decimal pl-5">{children}</ol>
+              ),
+              li: ({ children }) => <li className="mb-1">{children}</li>,
+              blockquote: ({ children }) => (
+                <blockquote className="border-l-4 border-yellow-500 pl-4 italic text-yellow-400">
+                  {children}
+                </blockquote>
+              ),
+              hr: () => <hr className="border-gray-700 my-4" />,
+              p: ({ children }) => (
+                <p className="text-yellow-400 font-semibold">{children}</p>
+              ),
+            }}
+          >
+            {openAiMarkUpMessage}
+          </ReactMarkdown>
         </div>
         <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold">내 투자</h1>
