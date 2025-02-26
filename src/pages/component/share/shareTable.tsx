@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface TableDetail {
+export interface ShareTableDetail {
   name: string;
   totalRate: string;
   totalProfit: string;
@@ -13,7 +13,7 @@ export interface TableDetail {
   dailyProfit: string;
 }
 
-const TableTr: React.FC<TableDetail> = ({
+const ShareTableTr: React.FC<ShareTableDetail> = ({
   name,
   totalRate,
   totalProfit,
@@ -52,4 +52,4 @@ const TableTr: React.FC<TableDetail> = ({
   );
 };
 
-export default TableTr;
+export default ShareTableTr;

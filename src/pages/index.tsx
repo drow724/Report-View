@@ -1,4 +1,5 @@
-import TableTitle from "./component/tableTitle";
+import ShareTableTitle from "./component/share/shareTableTitle";
+import FundTableTitle from "./component/fund/fundTableTitle";
 import "./globals.css";
 
 interface TossPortfolioDTO {
@@ -75,38 +76,43 @@ export async function getStaticProps() {
   };
 }
 
-const Home: React.FC<PortfolioData> = ({ tossPortfolioDTO }) => {
-  const {
-    totalInvestment,
-    totalRevenue,
-    dailyRevenue,
-    domesticsList,
-    overSeasList,
-  } = tossPortfolioDTO;
+const Home: React.FC<PortfolioData> = ({
+  tossPortfolioDTO,
+  kbPortfolioDTO,
+}) => {
+  const { domesticsList, overSeasList } = tossPortfolioDTO;
+
+  const { fundDetails } = kbPortfolioDTO;
 
   return (
     <div className="bg-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold">내 투자</h1>
-          <p className="text-3xl font-semibold mt-2">{totalInvestment}</p>
-          <p
-            className={`${
-              totalRevenue.includes("+") ? "text-red-400" : "text-blue-400"
-            } mt-1`}
-          >
-            총 수익: {totalRevenue}
+          <p className="text-3xl font-semibold mt-2">
+            {tossPortfolioDTO.totalInvestment}
           </p>
           <p
             className={`${
-              totalRevenue.includes("+") ? "text-red-400" : "text-blue-400"
+              tossPortfolioDTO.totalRevenue.includes("+")
+                ? "text-red-400"
+                : "text-blue-400"
+            } mt-1`}
+          >
+            총 수익: {tossPortfolioDTO.totalRevenue}
+          </p>
+          <p
+            className={`${
+              tossPortfolioDTO.totalRevenue.includes("+")
+                ? "text-red-400"
+                : "text-blue-400"
             }`}
           >
-            일간 수익: {dailyRevenue}
+            일간 수익: {tossPortfolioDTO.dailyRevenue}
           </p>
         </div>
         <div className="space-y-4">
-          <TableTitle
+          <ShareTableTitle
             subTitle="국내주식"
             tableDetails={domesticsList.map((domestics) => ({
               name: domestics.stockName,
@@ -121,7 +127,7 @@ const Home: React.FC<PortfolioData> = ({ tossPortfolioDTO }) => {
               dailyProfit: domestics.dailyProfit,
             }))}
           />
-          <TableTitle
+          <ShareTableTitle
             subTitle="해외주식"
             tableDetails={overSeasList.map((domestics) => ({
               name: domestics.stockName,
@@ -134,6 +140,19 @@ const Home: React.FC<PortfolioData> = ({ tossPortfolioDTO }) => {
               principal: domestics.principalAmount,
               dailyRate: domestics.dailyReturnRate,
               dailyProfit: domestics.dailyProfit,
+            }))}
+          />
+          <FundTableTitle
+            totalInvestment={kbPortfolioDTO.totalInvestment}
+            isPositive={kbPortfolioDTO.isPositive}
+            totalRevenue={kbPortfolioDTO.totalRevenue}
+            subTitle="국내펀드"
+            tableDetails={fundDetails.map((fund) => ({
+              name: fund.fundName,
+              totalRate: fund.fundRevenue,
+              totalProfit: fund.fundAmount,
+              fundBankAccount: fund.fundBankAccount,
+              isFundPositive: fund.isFundPositive,
             }))}
           />
         </div>

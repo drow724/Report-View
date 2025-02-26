@@ -1,22 +1,25 @@
 import React from "react";
-import TableTr, { TableDetail } from "./table";
+import ShareTableTr, { ShareTableDetail } from "./shareTable";
 
-interface TableInfo {
+interface ShareTableInfo {
   subTitle: string;
-  tableDetails: Array<TableDetail>;
+  tableDetails: Array<ShareTableDetail>;
 }
 
-const TableTitle: React.FC<TableInfo> = ({ subTitle, tableDetails = [] }) => {
+const ShareTableTitle: React.FC<ShareTableInfo> = ({
+  subTitle,
+  tableDetails = [],
+}) => {
   return (
     <div className="bg-gray-800 p-4 rounded-lg shadow overflow-x-auto">
       <h2 className="text-lg font-bold mb-2">{subTitle}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {tableDetails.map((tableDetail) => (
-          <TableTr key={tableDetail.name} {...tableDetail} />
+          <ShareTableTr key={tableDetail.name} {...tableDetail} />
         ))}
       </div>
     </div>
   );
 };
 
-export default TableTitle;
+export default ShareTableTitle;
