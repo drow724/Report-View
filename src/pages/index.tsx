@@ -2,7 +2,6 @@ import ShareTableTitle from "./component/share/shareTableTitle";
 import FundTableTitle from "./component/fund/fundTableTitle";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Menu } from "lucide-react";
 import "./globals.css";
 
 interface TossPortfolioDTO {
