@@ -64,7 +64,7 @@ interface PortfolioData {
 
 export async function getStaticProps() {
   // 데이터 호출 (예: API 호출)
-  const res = await fetch("http://localhost:8080/report");
+  const res = await fetch("http://129.154.198.38:8080/report");
   const data = await res.json();
 
   return {
