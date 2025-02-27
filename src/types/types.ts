@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export interface TossPortfolioDTO {
   totalInvestment: string;
   originalInvestment: string;
@@ -67,4 +69,11 @@ export interface PortfolioData {
   openAiMarkUpMessage: string;
   tossPortfolioDTO: TossPortfolioDTO;
   kbPortfolioDTO: KBPortfolioDTO;
+}
+
+export interface BackDropBlurProp {
+  handleStart: (
+    component: ReactElement
+  ) => (event: React.MouseEvent | React.TouchEvent) => void;
+  handleEnd: () => void;
 }
