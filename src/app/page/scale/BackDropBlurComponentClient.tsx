@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  useState,
-  PropsWithChildren,
-  useRef,
-  ReactElement,
-  ReactNode,
-} from "react";
+import React, { useState, PropsWithChildren, useRef } from "react";
 
 export default function BackDropBlurPage({ children }: PropsWithChildren) {
   const [contextMenu, setContextMenu] = useState<{
@@ -65,7 +59,7 @@ export default function BackDropBlurPage({ children }: PropsWithChildren) {
           {activeComponent}
 
           {/* 컨텍스트 메뉴 (우측 하단) */}
-          {/* {contextMenu && (
+          {contextMenu && (
             <div
               className="absolute w-48 bg-white rounded-lg shadow-lg p-2 z-40"
               style={{
@@ -87,7 +81,7 @@ export default function BackDropBlurPage({ children }: PropsWithChildren) {
                 </li>
               </ul>
             </div>
-          )} */}
+          )}
         </div>
       )}
     </>
