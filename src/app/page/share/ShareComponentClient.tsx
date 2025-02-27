@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import ShareTableTitle from "../component/share/shareTableTitle";
+import ShareTableTitle from "../../../component/share/shareTableTitle";
 import {
   TossPortfolioDTO,
   DomesticStock,
   OverseasStock,
-} from "../types/page.types";
+} from "../../../types/types";
 
-const SharePage: React.FC<TossPortfolioDTO> = ({
+export default function SharePage({
   totalInvestment,
   originalInvestment,
   totalRevenue,
@@ -19,7 +19,7 @@ const SharePage: React.FC<TossPortfolioDTO> = ({
   overSeasRevenue,
   domesticsList,
   overSeasList,
-}) => {
+}: TossPortfolioDTO) {
   const [isClose, setIsClose] = useState(true);
 
   return (
@@ -93,6 +93,4 @@ const SharePage: React.FC<TossPortfolioDTO> = ({
       )}
     </div>
   );
-};
-
-export default SharePage;
+}

@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import FundTableTitle from "../component/fund/fundTableTitle";
-import { KBPortfolioDTO, FundDetails } from "../types/page.types";
+import FundTableTitle from "../../../component/fund/fundTableTitle";
+import { KBPortfolioDTO } from "@/types/types";
 
-const FundPage: React.FC<KBPortfolioDTO> = ({
+export default function FundPage({
   totalInvestment,
   originalInvestment,
   totalRevenue,
   fundDetails,
-}) => {
+}: KBPortfolioDTO) {
   const [isClose, setIsClose] = useState(true);
 
   return (
@@ -38,7 +38,7 @@ const FundPage: React.FC<KBPortfolioDTO> = ({
           totalInvestment={totalInvestment}
           totalRevenue={totalRevenue}
           subTitle="국내펀드"
-          tableDetails={fundDetails.map((fund: FundDetails) => ({
+          tableDetails={fundDetails.map((fund) => ({
             name: fund.fundName,
             totalRate: fund.totalReturnRate,
             totalProfit: fund.totalProfit,
@@ -55,6 +55,4 @@ const FundPage: React.FC<KBPortfolioDTO> = ({
       )}
     </div>
   );
-};
-
-export default FundPage;
+}

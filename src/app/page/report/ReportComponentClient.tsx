@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ReportData } from "../types/page.types";
+import { ReportData } from "@/types/types";
 
-const ReportPage: React.FC<ReportData> = ({ openAiMarkUpMessage }) => {
+export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
   const [isClose, setIsClose] = useState(true);
 
   return (
@@ -67,6 +67,4 @@ const ReportPage: React.FC<ReportData> = ({ openAiMarkUpMessage }) => {
       )}
     </div>
   );
-};
-
-export default ReportPage;
+}
