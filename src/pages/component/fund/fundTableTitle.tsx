@@ -4,7 +4,6 @@ import FundTableTr, { FundTableDetail } from "./fundTable";
 interface FundTableInfo {
   subTitle: string;
   totalInvestment: string;
-  isPositive: boolean;
   totalRevenue: string;
   tableDetails: Array<FundTableDetail>;
 }
@@ -12,17 +11,18 @@ interface FundTableInfo {
 const FundTableTitle: React.FC<FundTableInfo> = ({
   subTitle,
   totalInvestment,
-  isPositive,
   totalRevenue,
   tableDetails = [],
 }) => {
   return (
     <div className="bg-gray-800 p-4 rounded-lg shadow overflow-x-auto">
       <h2 className="text-lg font-bold mb-2">
-        {subTitle} {totalInvestment}원{" "}
+        {subTitle} {totalInvestment}
       </h2>
       <p
-        className={`${isPositive ? "text-red-400" : "text-blue-400"} mt-1 mb-2`}
+        className={`${
+          totalRevenue.includes("+") ? "text-red-400" : "text-blue-400"
+        } mt-1 mb-2`}
       >
         총 수익: {totalRevenue}
       </p>

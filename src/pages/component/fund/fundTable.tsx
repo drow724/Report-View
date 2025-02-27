@@ -5,7 +5,8 @@ export interface FundTableDetail {
   totalRate: string;
   totalProfit: string;
   fundBankAccount: string;
-  isFundPositive: boolean;
+  totalValue: string;
+  principal: string;
 }
 
 const FundTableTr: React.FC<FundTableDetail> = ({
@@ -13,15 +14,19 @@ const FundTableTr: React.FC<FundTableDetail> = ({
   totalRate,
   totalProfit,
   fundBankAccount,
-  isFundPositive,
+  totalValue,
+  principal,
 }) => {
   return (
     <div className="p-3 bg-gray-700 rounded-lg">
       <p className="text-lg font-semibold">{name}</p>
-      <p className={`${isFundPositive ? "text-red-400" : "text-green-400"}`}>
+      <p className={`${totalRate ? "text-red-400" : "text-blue-400"}`}>
         총 수익: {totalRate} ({totalProfit})
       </p>
-      <p className="text-sm text-gray-400">펀드 계좌: {fundBankAccount}</p>
+      <p className="text-sm text-gray-400">
+        펀드 계좌: {fundBankAccount} <br />
+        평가금: {totalValue} | 원금: {principal}
+      </p>
     </div>
   );
 };

@@ -31,14 +31,14 @@ const ShareTableTr: React.FC<ShareTableDetail> = ({
       <span></span>
       <p
         className={`${
-          totalRate?.includes("-") ? "text-red-400" : "text-green-400"
+          totalRate?.includes("-") ? "text-blue-400" : "text-red-400"
         }`}
       >
         총 수익: {totalRate} ({totalProfit})
       </p>
       <p
         className={`${
-          dailyRate?.includes("-") ? "text-red-400" : "text-green-400"
+          dailyRate?.includes("-") ? "text-blue-400" : "text-red-400"
         }`}
       >
         일간 수익: {dailyRate} ({dailyProfit})

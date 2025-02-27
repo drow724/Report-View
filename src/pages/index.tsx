@@ -47,20 +47,25 @@ interface KBPortfolioDTO {
   bankAccount: string;
   portfolioTitle: string;
   totalInvestment: string;
+  originalInvestment: string;
   totalRevenue: string;
-  isPositive: boolean;
   fundDetails: FundDetails[];
 }
 
 interface FundDetails {
   fundBankAccount: string;
   fundName: string;
-  isFundPositive: boolean;
-  fundRevenue: string;
+  totalProfit: string;
+  totalReturnRate: string;
   fundAmount: string;
+  evaluationAmount: string;
+  principalAmount: string;
 }
 
 interface PortfolioData {
+  totalInvestment: string;
+  originalInvestment: string;
+  totalRevenue: string;
   openAiMarkUpMessage: string;
   tossPortfolioDTO: TossPortfolioDTO;
   kbPortfolioDTO: KBPortfolioDTO;
@@ -80,6 +85,9 @@ export async function getStaticProps() {
 }
 
 const Home: React.FC<PortfolioData> = ({
+  totalInvestment,
+  originalInvestment,
+  totalRevenue,
   openAiMarkUpMessage,
   tossPortfolioDTO,
   kbPortfolioDTO,
@@ -91,6 +99,21 @@ const Home: React.FC<PortfolioData> = ({
   return (
     <div className="bg-gray-900 text-white p-6">
       <div className="max-w-4xl mx-auto">
+        <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
+          <h1 className="text-3xl font-bold">내 투자</h1>
+          <p className="text-lg mt-2">
+            <span className="font-bold">평가금</span> : {totalInvestment}
+            <br />
+            <span className="font-bold">원금</span> : {originalInvestment}
+          </p>
+          <p
+            className={`mt-2 ${
+              totalRevenue.includes("+") ? "text-green-400" : "text-blue-400"
+            } mt-1`}
+          >
+            총 수익: {totalRevenue}
+          </p>
+        </div>
         <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -131,15 +154,20 @@ const Home: React.FC<PortfolioData> = ({
               p: ({ children }) => (
                 <p className="text-yellow-400 font-semibold">{children}</p>
               ),
+              code: ({ children }) => <>{children}</>,
             }}
           >
             {openAiMarkUpMessage}
           </ReactMarkdown>
         </div>
         <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
-          <h1 className="text-2xl font-bold">내 투자</h1>
-          <p className="text-3xl font-semibold mt-2">
+          <h1 className="text-2xl font-bold">주식 투자</h1>
+          <p className="text-lg mt-2">
+            <span className="font-bold">평가금</span> :{" "}
             {tossPortfolioDTO.totalInvestment}
+            <br />
+            <span className="font-bold">원금</span> :{" "}
+            {tossPortfolioDTO.originalInvestment}
           </p>
           <p
             className={`${
@@ -152,7 +180,7 @@ const Home: React.FC<PortfolioData> = ({
           </p>
           <p
             className={`${
-              tossPortfolioDTO.totalRevenue.includes("+")
+              tossPortfolioDTO.dailyRevenue.includes("+")
                 ? "text-red-400"
                 : "text-blue-400"
             }`}
@@ -160,7 +188,7 @@ const Home: React.FC<PortfolioData> = ({
             일간 수익: {tossPortfolioDTO.dailyRevenue}
           </p>
         </div>
-        <div className="space-y-4">
+        <div className="mb-6 space-y-4">
           <ShareTableTitle
             subTitle="국내주식"
             totalInvestment={tossPortfolioDTO.domesticTotal}
@@ -195,17 +223,38 @@ const Home: React.FC<PortfolioData> = ({
               dailyProfit: domestics.dailyProfit,
             }))}
           />
+        </div>
+        <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
+          <h1 className="text-2xl font-bold">펀드 투자</h1>
+          <p className="text-lg mt-2">
+            <span className="font-bold">평가금</span> :{" "}
+            {kbPortfolioDTO.totalInvestment}
+            <br />
+            <span className="font-bold">원금</span> :{" "}
+            {kbPortfolioDTO.originalInvestment}
+          </p>
+          <p
+            className={`mt-1 ${
+              kbPortfolioDTO.totalRevenue.includes("+")
+                ? "text-red-400"
+                : "text-blue-400"
+            } mt-1`}
+          >
+            총 수익: {kbPortfolioDTO.totalRevenue}
+          </p>
+        </div>
+        <div className="mb-6 space-y-4">
           <FundTableTitle
             totalInvestment={kbPortfolioDTO.totalInvestment}
-            isPositive={kbPortfolioDTO.isPositive}
             totalRevenue={kbPortfolioDTO.totalRevenue}
             subTitle="국내펀드"
             tableDetails={fundDetails.map((fund) => ({
               name: fund.fundName,
-              totalRate: fund.fundRevenue,
-              totalProfit: fund.fundAmount,
+              totalRate: fund.totalReturnRate,
+              totalProfit: fund.totalProfit,
               fundBankAccount: fund.fundBankAccount,
-              isFundPositive: fund.isFundPositive,
+              totalValue: fund.evaluationAmount,
+              principal: fund.principalAmount,
             }))}
           />
         </div>
