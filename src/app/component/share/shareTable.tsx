@@ -28,7 +28,6 @@ const ShareTableTr: React.FC<ShareTableDetail> = ({
   return (
     <div className="p-3 bg-gray-700 rounded-lg">
       <p className="text-lg font-semibold">{name}</p>
-      <span></span>
       <p
         className={`${
           totalRate?.includes("-") ? "text-blue-400" : "text-red-400"

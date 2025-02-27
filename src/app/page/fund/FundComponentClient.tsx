@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import FundTableTitle from "../../../component/fund/fundTableTitle";
+import FundTableTitle from "../../component/fund/fundTableTitle";
 import { KBPortfolioDTO } from "@/types/types";
 
 export default function FundPage({

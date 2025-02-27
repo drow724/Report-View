@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import ShareTableTitle from "../../../component/share/shareTableTitle";
+import ShareTableTitle from "../../component/share/shareTableTitle";
 import {
   TossPortfolioDTO,
   DomesticStock,
