@@ -21,7 +21,7 @@ const FundTableTitle: React.FC<FundTableInfo> = ({
       </h2>
       <p
         className={`${
-          totalRevenue.includes("+") ? "text-red-400" : "text-blue-400"
+          totalRevenue?.includes("+") ? "text-red-400" : "text-blue-400"
         } mt-1 mb-2`}
       >
         총 수익: {totalRevenue}
