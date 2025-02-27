@@ -15,7 +15,7 @@ export default function FundPage({
   return (
     <div
       className={`${
-        isClose ? "relative line-clamp-4 block-content" : ""
+        isClose ? "relative line-clamp-5 block-content" : ""
       } max-w-4xl mx-auto mb-6`}
     >
       <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md ">
