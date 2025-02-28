@@ -61,8 +61,8 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
       ref={containerRef}
       className={`${
         isClose
-          ? "relative block-content max-h-72 overflow-hidden scale-100"
-          : `relative open-content max-h-[10000px] scale-105 mt-20`
+          ? "relative block-content max-h-72 overflow-hidden scale-100 mb-6"
+          : `relative open-content max-h-[10000px] scale-105 mt-20 mb-20`
       } max-w-4xl mx-auto mb-20 max-w-4xl mx-auto transition-all duration-1000 ease-in-out`}
     >
       <div

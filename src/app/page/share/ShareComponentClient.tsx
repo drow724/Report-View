@@ -74,9 +74,9 @@ export default function SharePage({
       ref={containerRef}
       className={`${
         isClose
-          ? "relative block-content max-h-72 overflow-hidden scale-100"
-          : `relative open-content max-h-[10000px] scale-105`
-      } max-w-4xl mx-auto mb-20 transition-all duration-1000 ease-in-out`}
+          ? "relative block-content max-h-72 overflow-hidden scale-100 mb-6"
+          : `relative open-content max-h-[10000px] scale-105 mb-20`
+      } max-w-4xl mx-auto  transition-all duration-1000 ease-in-out`}
     >
       <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md transition-all duration-1000 ease-in-out">
         <h1 className="text-2xl font-bold">주식 투자</h1>
