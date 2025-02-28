@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ReportData } from "@/types/types";
-import { ChevronsDown } from "lucide-react";
+import { ChevronsDown, ChevronsUp } from "lucide-react";
 
 export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
   const [isClose, setIsClose] = useState(true);
@@ -12,10 +12,12 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
   return (
     <div
       className={`${
-        isClose ? "relative line-clamp-5 block-content" : ""
-      } max-w-4xl mx-auto mb-6`}
+        isClose
+          ? "relative line-clamp-5 block-content"
+          : "relative open-content"
+      } max-w-4xl mx-auto mb-6 h-full`}
     >
-      <div className="p-6 bg-gray-800 rounded-lg shadow-md ">
+      <div className="p-6 bg-gray-800 rounded-lg shadow-md">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -61,11 +63,16 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
           {openAiMarkUpMessage}
         </ReactMarkdown>
       </div>
-      {isClose && (
-        <button className="copas_btn" onClick={() => setIsClose(false)}>
+      <button
+        className={isClose ? "copas_btn_close" : "copas_btn_open"}
+        onClick={() => setIsClose((prev) => !prev)}
+      >
+        {isClose ? (
           <ChevronsDown className="w-8 h-8 text-white-900 animate-bounce" />
-        </button>
-      )}
+        ) : (
+          <ChevronsUp className="w-8 h-8 text-white-900 animate-bounce" />
+        )}
+      </button>
     </div>
   );
 }

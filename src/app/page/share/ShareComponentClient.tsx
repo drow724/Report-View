@@ -7,7 +7,7 @@ import {
   DomesticStock,
   OverseasStock,
 } from "../../../types/types";
-import { ChevronsDown } from "lucide-react";
+import { ChevronsDown, ChevronsUp } from "lucide-react";
 
 export default function SharePage({
   totalInvestment,
@@ -26,7 +26,9 @@ export default function SharePage({
   return (
     <div
       className={`${
-        isClose ? "relative line-clamp-5 block-content" : ""
+        isClose
+          ? "relative line-clamp-5 block-content"
+          : "relative open-content"
       } max-w-4xl mx-auto mb-6`}
     >
       <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md">
@@ -87,11 +89,16 @@ export default function SharePage({
           }))}
         />
       </div>
-      {isClose && (
-        <button className="copas_btn" onClick={() => setIsClose(false)}>
+      <button
+        className={isClose ? "copas_btn_close" : "copas_btn_open"}
+        onClick={() => setIsClose((prev) => !prev)}
+      >
+        {isClose ? (
           <ChevronsDown className="w-8 h-8 text-white-900 animate-bounce" />
-        </button>
-      )}
+        ) : (
+          <ChevronsUp className="w-8 h-8 text-white-900 animate-bounce" />
+        )}
+      </button>
     </div>
   );
 }
