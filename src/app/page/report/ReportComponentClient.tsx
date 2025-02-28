@@ -17,7 +17,11 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
           : "relative open-content"
       } max-w-4xl mx-auto mb-6 h-full`}
     >
-      <div className="p-6 bg-gray-800 rounded-lg shadow-md">
+      <div
+        className={`${
+          isClose ? "" : "pb-16"
+        } p-6 bg-gray-800 rounded-lg shadow-md`}
+      >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{

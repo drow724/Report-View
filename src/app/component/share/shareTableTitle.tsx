@@ -15,7 +15,7 @@ const ShareTableTitle: React.FC<ShareTableInfo> = ({
   tableDetails = [],
 }) => {
   return (
-    <div className="bg-gray-800 p-4 rounded-lg shadow overflow-x-auto">
+    <div className="bg-gray-800 p-4 rounded-lg shadow overflow-x-auto pb-12">
       <h2 className="text-lg font-bold mb-2">
         {subTitle} {totalInvestment}{" "}
       </h2>
