@@ -49,7 +49,7 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
             smoothScrollTo(topY, 1000);
           }
           setIsClose(true);
-        }, 500); // Tailwind `duration-500`의 절반 시간 후 이동 시작
+        }, 300); // Tailwind `duration-1000`의 절반 시간 후 이동 시작
       }
     } else {
       setIsClose(false);
@@ -62,7 +62,7 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
       className={`${
         isClose
           ? "relative block-content max-h-72 overflow-hidden scale-100"
-          : `relative open-content max-h-[10000px] scale-105`
+          : `relative open-content max-h-[10000px] scale-105 mt-20`
       } max-w-4xl mx-auto mb-20 max-w-4xl mx-auto transition-all duration-1000 ease-in-out`}
     >
       <div

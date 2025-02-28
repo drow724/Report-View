@@ -53,7 +53,7 @@ export default function FundPage({
             smoothScrollTo(topY, 1000);
           }
           setIsClose(true);
-        }, 500); // Tailwind `duration-500`의 절반 시간 후 이동 시작
+        }, 300); // Tailwind `duration-1000`의 절반 시간 후 이동 시작
       }
     } else {
       setIsClose(false);
