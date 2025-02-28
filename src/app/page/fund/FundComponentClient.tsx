@@ -69,7 +69,7 @@ export default function FundPage({
           : `relative open-content max-h-[10000px] scale-105 mb-20`
       } max-w-4xl mx-auto mb-20 transition-all duration-1000 ease-in-out`}
     >
-      <div className="mb-6 p-6 bg-gray-800 rounded-lg shadow-md transition-all duration-1000 ease-in-out">
+      <div className="mb-6 p-6 bg-gray-800 rounded-lg transition-all duration-1000 ease-in-out">
         <h1 className="text-2xl font-bold">펀드 투자</h1>
         <p className="text-lg mt-2">
           <span className="font-bold">평가금</span> : {totalInvestment}

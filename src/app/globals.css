@@ -35,6 +35,10 @@ body {
   border-radius: 0.5rem;
 }
 
+.open-content {
+  will-change: scroll-position;
+}
+
 .open-content::after {
   content: "";
   position: absolute;
