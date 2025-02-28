@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ReportData } from "@/types/types";
+import { ChevronsDown } from "lucide-react";
 
 export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
   const [isClose, setIsClose] = useState(true);
@@ -62,7 +63,7 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
       </div>
       {isClose && (
         <button className="copas_btn" onClick={() => setIsClose(false)}>
-          <b>더보기</b>
+          <ChevronsDown className="w-8 h-8 text-white-900 animate-bounce" />
         </button>
       )}
     </div>

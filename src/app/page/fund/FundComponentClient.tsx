@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import FundTableTitle from "../../component/fund/fundTableTitle";
 import { KBPortfolioDTO } from "@/types/types";
+import { ChevronsDown } from "lucide-react";
 
 export default function FundPage({
   totalInvestment,
@@ -50,7 +51,7 @@ export default function FundPage({
       </div>
       {isClose && (
         <button className="copas_btn" onClick={() => setIsClose(false)}>
-          <b>더보기</b>
+          <ChevronsDown className="w-8 h-8 text-white-900 animate-bounce" />
         </button>
       )}
     </div>

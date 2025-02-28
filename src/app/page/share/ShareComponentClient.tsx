@@ -7,6 +7,7 @@ import {
   DomesticStock,
   OverseasStock,
 } from "../../../types/types";
+import { ChevronsDown } from "lucide-react";
 
 export default function SharePage({
   totalInvestment,
@@ -88,7 +89,7 @@ export default function SharePage({
       </div>
       {isClose && (
         <button className="copas_btn" onClick={() => setIsClose(false)}>
-          <b>더보기</b>
+          <ChevronsDown className="w-8 h-8 text-white-900 animate-bounce" />
         </button>
       )}
     </div>
