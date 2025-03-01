@@ -45,7 +45,9 @@ export default function ReportPage({ openAiMarkUpMessage }: ReportData) {
         setTimeout(() => {
           if (containerRef.current) {
             const topY =
-              containerRef.current.getBoundingClientRect().top + window.scrollY;
+              containerRef.current.getBoundingClientRect().top +
+              window.scrollY -
+              50;
             smoothScrollTo(topY, 1000);
           }
           setIsClose(true);
