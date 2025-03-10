@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 //import BackDropBlurPage from "./page/scale/BackDropBlurComponentClient";
 
 export default async function ArticlePage() {
-  const res = await fetch("http://129.154.198.38:8080/report", {
+  const res = await fetch(`${process.env.API_URL}/report`, {
     next: { revalidate: 600 },
   });
   const data = await res.json();
